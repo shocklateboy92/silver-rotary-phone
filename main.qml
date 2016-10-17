@@ -9,33 +9,13 @@ Window {
     color: "red"
 
     Rectangle {
-        property int effectiveWidth: parent.width / 2
-
-        anchors {
-            left: parent.left
-            verticalCenter: parent.verticalCenter
-        }
-
-        width: effectiveWidth
-        height: effectiveWidth
-
-        radius: effectiveWidth / 2
+        property int effectiveWidth: Math.min(parent.width, parent.height)
+        anchors.centerIn: parent
         border.color: "white"
         border.width: 12
         color: "red"
-    }
-
-    Text {
-        anchors {
-            right: parent.right
-            verticalCenter: parent.verticalCenter
-        }
-        width: parent.width / 2
-
-        text: "Unfinished Tasks"
-        font.pixelSize: 100
-        color: "white"
-        horizontalAlignment: Text.AlignHCenter
-        wrapMode: Text.WordWrap
+        radius: effectiveWidth / 2
+        width: effectiveWidth
+        height: effectiveWidth
     }
 }
