@@ -31,7 +31,7 @@ Window {
 
     Text {
         color: "white"
-        font.pixelSize: parent.effectiveWidth
+        font.pixelSize: parent.effectiveWidth * 0.9
         font.family: fa.family
         renderType: Text.NativeRendering
         text: fa.loaded ? fa.icons.fa_check : ""
