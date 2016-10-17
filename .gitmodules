@@ -1,0 +1,3 @@
+[submodule "font-awesome-qml"]
+	path = font-awesome-qml
+	url = git@github.com:QMLCommunity/font-awesome-qml.git
