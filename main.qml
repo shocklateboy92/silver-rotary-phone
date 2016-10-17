@@ -3,8 +3,8 @@ import QtQuick.Window 2.2
 
 Window {
     visible: true
-    width: 640
-    height: 480
+    width: Math.min(Screen.desktopAvailableWidth, Screen.width)
+    height: Math.min(Screen.desktopAvailableHeight, Screen.height)
     title: qsTr("Hello World")
     color: "red"
 
