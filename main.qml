@@ -10,12 +10,15 @@ Window {
 
     Rectangle {
         property int effectiveWidth: Math.min(parent.width, parent.height)
+
         anchors.centerIn: parent
-        border.color: "white"
-        border.width: 12
-        color: "red"
-        radius: effectiveWidth / 2
+
         width: effectiveWidth
         height: effectiveWidth
+
+        radius: effectiveWidth / 2
+        color: "red"
+        border.color: "white"
+        border.width: 12
     }
 }
