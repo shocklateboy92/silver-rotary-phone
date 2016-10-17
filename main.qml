@@ -30,10 +30,13 @@ Window {
         border.width: 12
 
     Text {
-        color: "white"
+        anchors.centerIn: parent
         font.pixelSize: parent.effectiveWidth * 0.9
-        font.family: fa.family
+
         renderType: Text.NativeRendering
+        font.family: fa.family
+
+        color: "white"
         text: fa.loaded ? fa.icons.fa_check : ""
     }
     }
