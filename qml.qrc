@@ -6,5 +6,7 @@
         <file>font-awesome-qml/controls/Loader.qml</file>
         <file>font-awesome-qml/controls/Text.qml</file>
         <file>font-awesome-qml/controls/Variables.qml</file>
+        <file>main.js</file>
+        <file>creds.js</file>
     </qresource>
 </RCC>

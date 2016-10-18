@@ -71,3 +71,5 @@ Thumbs.db
 *.dll
 *.exe
 
+# Don't want to accidentally include my auth token
+creds.js
