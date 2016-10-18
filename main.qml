@@ -7,6 +7,8 @@ import "font-awesome-qml/controls" as FontAwesomeControls
 import "main.js" as Main
 import "creds.js" as Creds
 
+import "http://momentjs.com/downloads/moment.min.js" as Moment
+
 Window {
     visible: true
     width: Math.min(Screen.desktopAvailableWidth, Screen.width)
@@ -50,12 +52,18 @@ Window {
         repeat: true
         running: true
 
+        function parseDate(date) {
+            return Moment.moment(date, "ddd DD MMM YYYY HH:mm:ss ZZ");
+        }
+
         triggeredOnStart: true;
         onTriggered: {
             const PROJECT_ID_ERRANDS = "133131598";
             const url = 'https://todoist.com/api/v7/sync?token={token}&sync_token=*&resource_types=["items"]';
             url = url.replace("{token}", Creds.AUTH_TOKEN);
             console.debug(url);
+
+            var tonight = Moment.moment().endOf('day');
 
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = (function() {
@@ -65,12 +73,13 @@ Window {
                         var response =  JSON.parse(xhr.responseText);
                         var hotTasks = response.items.filter(function(x) {
                             return x.project_id == PROJECT_ID_ERRANDS &&
-                                    Main.parseDate(x.due_date_utc) < new Date();
+                                    !x.checked &&
+                                    parseDate(x.due_date_utc).isSameOrBefore(tonight);
                         });
                         var numTasks = hotTasks.length
                         console.log("Got " + numTasks + " tasks:");
                         for (var i = 0; i < hotTasks.length; i++){
-                            console.log("\t" + JSON.stringify(hotTasks[i], null, 4))
+                            console.log("\t" + JSON.stringify(hotTasks[i].due_date_utc));
                         }
 
                         outputText.text = numTasks === 0 ? fa.icons.fa_check : numTasks;
