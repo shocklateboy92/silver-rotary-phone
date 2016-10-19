@@ -37,6 +37,7 @@ Window {
         Text {
             id: outputText
             anchors.centerIn: parent
+            anchors.verticalCenterOffset: 15
             font.pixelSize: parent.effectiveWidth * 0.9
 
             renderType: Text.NativeRendering
